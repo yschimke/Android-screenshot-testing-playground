@@ -3,7 +3,6 @@ package snapshot.testing.lazycolumn_previews.compose_screenshot
 import android.os.Build
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewFontScale
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import com.example.road.to.effective.snapshot.testing.lazycolumnscreen.AppTheme
@@ -30,13 +29,22 @@ fun CoffeeDrinkListWithParametersPreview(
     }
 }
 
-@PreviewFontScale
 @PreviewLightDark
 @Composable
-fun CoffeeDrinkListMultiConfigPreview() {
+fun CoffeeDrinkListMultiConfigPreviewNoImage() {
     AppTheme {
         CoffeeDrinkList(
             coffeeDrink = coffeeDrink().copy(imageUrl = null)
+        )
+    }
+}
+
+@PreviewLightDark
+@Composable
+fun CoffeeDrinkListMultiConfigPreviewLocal() {
+    AppTheme {
+        CoffeeDrinkList(
+            coffeeDrink = coffeeDrink().copy(imageUrl = snapshot.testing.lazycolumn_previews.compose_screenshot.R.drawable.americano_small_2)
         )
     }
 }
