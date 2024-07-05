@@ -2,6 +2,7 @@ package snapshot.testing.lazycolumn_previews.compose_screenshot
 
 import android.os.Build
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewFontScale
 import androidx.compose.ui.tooling.preview.PreviewLightDark
@@ -19,16 +20,13 @@ import com.example.road.to.effective.snapshot.testing.lazycolumnscreen.R
  * in the "screenshotTest" source, so previews in the "main" source are ignored
  */
 class PreviewsForScreenshotTests {
-    private val coffeeDrink =
+    @Composable
+    private fun coffeeDrink() =
         CoffeeDrinkItem(
             id = 1L,
-            name = "Americano",
+            name = stringResource(R.string.americano_title),
             imageUrl = R.drawable.americano_small,
-            description =
-            """
-        Americano is a type of coffee drink prepared by diluting an espresso with hot water,
-        giving it a similar strength to, but different flavour from, traditionally brewed coffee.
-        """.trimIndent(),
+            description = stringResource(R.string.americano_description),
             ingredients = "Espresso, Water",
             isFavourite = false
         )
@@ -51,7 +49,7 @@ class PreviewsForScreenshotTests {
     fun CoffeeDrinkListMultiConfigPreview() {
         AppTheme {
             CoffeeDrinkList(
-                coffeeDrink = coffeeDrink
+                coffeeDrink = coffeeDrink()
             )
         }
     }
@@ -61,7 +59,7 @@ class PreviewsForScreenshotTests {
     fun CoffeeDrinkListPseudoLocalePreview() {
         AppTheme {
             CoffeeDrinkList(
-                coffeeDrink = coffeeDrink
+                coffeeDrink = coffeeDrink()
             )
         }
     }
@@ -71,7 +69,7 @@ class PreviewsForScreenshotTests {
     fun CoffeeDrinkListApiLevelPreview() {
         AppTheme {
             CoffeeDrinkList(
-                coffeeDrink = coffeeDrink.copy(name = "API ${Build.VERSION.SDK_INT}")
+                coffeeDrink = coffeeDrink().copy(name = "API ${Build.VERSION.SDK_INT}")
             )
         }
     }

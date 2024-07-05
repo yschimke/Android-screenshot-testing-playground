@@ -46,6 +46,8 @@ android {
 }
 
 dependencies {
+    debugImplementation "androidx.compose.ui:ui-tooling:1.6.8"
+
     screenshotTestImplementation project(":lazycolumnscreen")
 
     // Jetpack Compose
