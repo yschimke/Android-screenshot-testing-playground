@@ -47,7 +47,9 @@ fun CoffeeDrinkListItem(
     coffeeDrink: CoffeeDrinkItem
 ) {
     Row(Modifier.background(color = MaterialTheme.colors.background)) {
-        CoffeeDrinkLogo(id = coffeeDrink.imageUrl)
+        if (coffeeDrink.imageUrl != null) {
+            CoffeeDrinkLogo(id = coffeeDrink.imageUrl)
+        }
         Box(
             modifier = Modifier.weight(1f)
         ) {
